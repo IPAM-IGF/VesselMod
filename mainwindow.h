@@ -18,13 +18,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void static addLog(const char[] txt);
+    //static void addLog(const std::string &txt);
+    static Ui::MainWindowClass* uiStat;
 private slots:
 	void launchApp();
 
 private:
     Ui::MainWindowClass ui;
-    static Ui::MainWindowClass* uiStat;
+
 };
 
 #endif // MAINWINDOW_H

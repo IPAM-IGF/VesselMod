@@ -4,7 +4,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
-	uiStat=&ui;
+	//MainWindow::uiStat=&ui;
     QAction::connect(ui.actionRun, SIGNAL(triggered()), this, SLOT(launchApp()));
 }
 
@@ -12,11 +12,11 @@ MainWindow::~MainWindow()
 {
 
 }
-void MainWindow::addLog(const char[]* txt){
+/*void MainWindow::addLog(const std::string &txt){
 
-	QString qs=uiStat->LogPanel->toPlainText().append(&txt);
-	uiStat->LogPanel->setPlainText(qs);
-}
+	//QString qs=uiStat->LogPanel->toPlainText().append(&txt);
+	//uiStat->LogPanel->setPlainText(qs);
+}*/
 void MainWindow::launchApp(){
 	Box customBox(200,200,200);
 	int nbcells=40;

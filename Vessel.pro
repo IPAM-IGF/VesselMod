@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = Vessel
+TARGET = SpidV
 QT += core \
     gui \
     opengl
