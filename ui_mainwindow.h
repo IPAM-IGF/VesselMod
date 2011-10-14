@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Fri Oct 14 17:20:53 2011
+** Created: Fri Oct 14 18:05:59 2011
 **      by: Qt User Interface Compiler version 4.7.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -153,8 +153,14 @@ public:
         CellTree->setMinimumSize(QSize(250, 0));
         CellTree->setMaximumSize(QSize(200, 16777215));
         CellTree->setLineWidth(1);
+        CellTree->setSortingEnabled(true);
+        CellTree->setAnimated(true);
+        CellTree->setHeaderHidden(false);
         CellTree->header()->setVisible(true);
         CellTree->header()->setCascadingSectionResizes(false);
+        CellTree->header()->setDefaultSectionSize(100);
+        CellTree->header()->setHighlightSections(false);
+        CellTree->header()->setProperty("showSortIndicator", QVariant(true));
 
         gridLayout_3->addWidget(CellTree, 0, 0, 1, 1);
 
@@ -334,6 +340,10 @@ public:
         containerTree->setObjectName(QString::fromUtf8("containerTree"));
         containerTree->setMinimumSize(QSize(250, 0));
         containerTree->setMaximumSize(QSize(200, 16777215));
+        containerTree->setFrameShape(QFrame::StyledPanel);
+        containerTree->setSortingEnabled(true);
+        containerTree->setAnimated(true);
+        containerTree->header()->setProperty("showSortIndicator", QVariant(true));
 
         gridLayout_3->addWidget(containerTree, 1, 0, 1, 1);
 
@@ -359,7 +369,7 @@ public:
 
         retranslateUi(MainWindowClass);
 
-        RightToolbox->setCurrentIndex(1);
+        RightToolbox->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindowClass);
@@ -372,6 +382,9 @@ public:
         LogPanel->setPlainText(QApplication::translate("MainWindowClass", "Welcome to SpidV\n"
 "", 0, QApplication::UnicodeUTF8));
         ProcessStatus->setText(QApplication::translate("MainWindowClass", "Unknow", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        CellTree->setToolTip(QApplication::translate("MainWindowClass", "List of generated cells", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
         nbcellslab->setText(QApplication::translate("MainWindowClass", "Cells", 0, QApplication::UnicodeUTF8));
         Radiuslab->setText(QApplication::translate("MainWindowClass", "Radius", 0, QApplication::UnicodeUTF8));
         boxsizelab->setText(QApplication::translate("MainWindowClass", "Box width", 0, QApplication::UnicodeUTF8));
@@ -386,6 +399,12 @@ public:
         label_5->setText(QApplication::translate("MainWindowClass", "X", 0, QApplication::UnicodeUTF8));
         RightToolbox->setItemText(RightToolbox->indexOf(simopt), QApplication::translate("MainWindowClass", "Simulation options", 0, QApplication::UnicodeUTF8));
         RightToolbox->setItemText(RightToolbox->indexOf(othopt), QApplication::translate("MainWindowClass", "Other options", 0, QApplication::UnicodeUTF8));
+#ifndef QT_NO_TOOLTIP
+        containerTree->setToolTip(QApplication::translate("MainWindowClass", "List of used containers", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_ACCESSIBILITY
+        containerTree->setAccessibleName(QApplication::translate("MainWindowClass", "Containers", 0, QApplication::UnicodeUTF8));
+#endif // QT_NO_ACCESSIBILITY
         menuFile->setTitle(QApplication::translate("MainWindowClass", "File", 0, QApplication::UnicodeUTF8));
         menuLaunch->setTitle(QApplication::translate("MainWindowClass", "Launch", 0, QApplication::UnicodeUTF8));
     } // retranslateUi

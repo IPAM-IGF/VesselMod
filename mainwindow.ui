@@ -115,8 +115,20 @@ background-image: url(:/backgroundimg/background.jpg);*/
            <height>16777215</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>List of generated cells</string>
+         </property>
          <property name="lineWidth">
           <number>1</number>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="animated">
+          <bool>true</bool>
+         </property>
+         <property name="headerHidden">
+          <bool>false</bool>
          </property>
          <attribute name="headerVisible">
           <bool>true</bool>
@@ -124,11 +136,29 @@ background-image: url(:/backgroundimg/background.jpg);*/
          <attribute name="headerCascadingSectionResizes">
           <bool>false</bool>
          </attribute>
+         <attribute name="headerDefaultSectionSize">
+          <number>100</number>
+         </attribute>
+         <attribute name="headerHighlightSections">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="headerShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
          <attribute name="headerCascadingSectionResizes">
           <bool>false</bool>
          </attribute>
+         <attribute name="headerDefaultSectionSize">
+          <number>100</number>
+         </attribute>
          <attribute name="headerVisible">
           <bool>true</bool>
+         </attribute>
+         <attribute name="headerShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="headerHighlightSections">
+          <bool>false</bool>
          </attribute>
          <column>
           <property name="text">
@@ -180,7 +210,7 @@ background-image: url(:/backgroundimg/background.jpg);*/
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="simopt">
           <property name="geometry">
@@ -429,6 +459,27 @@ background-image: url(:/backgroundimg/background.jpg);*/
            <height>16777215</height>
           </size>
          </property>
+         <property name="toolTip">
+          <string>List of used containers</string>
+         </property>
+         <property name="accessibleName">
+          <string>Containers</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="animated">
+          <bool>true</bool>
+         </property>
+         <attribute name="headerShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="headerShowSortIndicator" stdset="0">
+          <bool>true</bool>
+         </attribute>
          <column>
           <property name="text">
            <string notr="true">1</string>
