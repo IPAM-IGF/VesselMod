@@ -59,8 +59,8 @@ void MainWindow::launchApp(){
 	CVector coord;
 
 	// instantiate new cells
-	addLog("Instantiate cells...");
 	for(int i=0;i<nbcells;i++){
+		addLog(("Instantiate cells..."+to_string(i+1)).c_str());
 		coord.setX(rand()%(int)customBox.getWidth());
 		coord.setY(rand()%(int)customBox.getHeight());
 		coord.setZ(rand()%(int)customBox.getDepth());
