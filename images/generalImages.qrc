@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/ico">
+        <file>axis.png</file>
+        <file>box.png</file>
+        <file>cells.gif</file>
+        <file>radius.gif</file>
+    </qresource>
+    <qresource prefix="/big">
+        <file>background.jpg</file>
+    </qresource>
+</RCC>

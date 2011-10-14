@@ -2,6 +2,7 @@
 #define CELL_H
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include "protoClass.h"
 #include "Force.h"
 #include "Box.h"
@@ -15,16 +16,17 @@ class Cell
 {
 public:
 	Cell(void);
-	Cell(int type, double radius, CVector coord);
-	Cell(int type, double radius, CVector coord,std::vector<Force> forces);
+	Cell(int id);
+	Cell(int id, int type, float radius, CVector coord);
+	Cell(int id, int type, float radius, CVector coord,std::vector<Force> forces);
 	~Cell(void);
-	void setRadius(double radius);
+	void setRadius(float radius);
 	void setType(int type);
 	void setForces(std::vector<Force> forces);
 	void setCoord(CVector coord);
 	int getType() const;
 	CVector getCoord() const;
-	double getRadius() const;
+	float getRadius() const;
 	std::vector<Force> getForces() const;
 	float evalDistance(const Cell &c) const;
 	float evalOverlap(const Cell &c) const;
@@ -46,11 +48,14 @@ public:
     void setHr(bool hr);
     void setWl(bool wl);
     void setWr(bool wr);
+    void setID(int i);
+    int getID() const;
     void resetBoxCol();
 private:
     int type;
+    int ID;
     CVector coord;
-    double radius;
+    float radius;
     std::vector<Force> forces;
     bool WR;
     bool WL;

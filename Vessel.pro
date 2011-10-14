@@ -3,7 +3,8 @@ TARGET = SpidV
 QT += core \
     gui \
     opengl
-HEADERS += lib/GlobalDef.h \
+HEADERS += classes/Container.h \
+    lib/GlobalDef.h \
     classes/Box.h \
     classes/BoxForce.h \
     classes/CVector.h \
@@ -13,7 +14,8 @@ HEADERS += lib/GlobalDef.h \
     classes/Force.h \
     classes/protoClass.h \
     mainwindow.h
-SOURCES += classes/Box.cpp \
+SOURCES += classes/Container.cpp \
+    classes/Box.cpp \
     classes/BoxForce.cpp \
     classes/CVector.cpp \
     classes/Cell.cpp \
@@ -23,4 +25,5 @@ SOURCES += classes/Box.cpp \
     main.cpp \
     mainwindow.cpp
 FORMS += mainwindow.ui
-RESOURCES += icones.qrc
+RESOURCES += images/generalImages.qrc \
+    icones.qrc

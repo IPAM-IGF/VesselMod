@@ -5,6 +5,8 @@
 #include "ui_mainwindow.h"
 #include <iostream>
 #include <string>
+#include <stdio.h>
+#include <stdlib.h>
 #include <vector>
 #include <classes/Box.h>
 #include <classes/Force.h>
@@ -18,13 +20,16 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    ///static void addLog(const std::string &txt);
+    static void addLog(const char txt[]);
     static Ui::MainWindowClass* uiStat;
 private slots:
+	void setIso();
 	void launchApp();
 
 private:
     Ui::MainWindowClass ui;
+    bool isoReduce;
+    QGraphicsScene scene;
 
 };
 

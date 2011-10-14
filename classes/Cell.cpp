@@ -10,12 +10,17 @@ Cell::Cell(void)
 	resetBoxCol();
 }
 
-Cell::Cell(int t, double r, CVector c):type(t), radius(r), coord(c)
+Cell::Cell(int id):ID(id)
 {
 	resetBoxCol();
 }
 
-Cell::Cell(int t, double r, CVector c,std::vector<Force> f):type(t), radius(r), coord(c), forces(f)
+Cell::Cell(int id, int t, float r, CVector c):ID(id), type(t), radius(r), coord(c)
+{
+	resetBoxCol();
+}
+
+Cell::Cell(int id, int t, float r, CVector c,std::vector<Force> f):ID(id), type(t), radius(r), coord(c), forces(f)
 {
 	resetBoxCol();
 }
@@ -33,12 +38,12 @@ CVector Cell::getCoord() const
 	return this->coord;
 }
 
-double Cell::getRadius() const
+float Cell::getRadius() const
 {
 	return this->radius;
 }
 
-void Cell::setRadius(double radius)
+void Cell::setRadius(float radius)
 {
 	this->radius=radius;
 }
@@ -201,7 +206,12 @@ void Cell::setWr(bool wr)
 {
     WR = wr;
 }
-
+void Cell::setID(int id){
+	ID=id;
+}
+int Cell::getID() const {
+	return ID;
+}
 void Cell::resetBoxCol()
 {
 	WR = false;

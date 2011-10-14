@@ -1,5 +1,14 @@
 <RCC>
-  <qresource prefix="icoRun">
-    <file>fleche verte.gif</file>
+  <qresource prefix="/icoRun">
+    <file>images/fleche verte.gif</file>
+  </qresource>
+  <qresource prefix="/backgroundimg">
+    <file>images/background.jpg</file>
+  </qresource>
+  <qresource prefix="/generalIco">
+    <file>images/axis.png</file>
+    <file>images/box.png</file>
+    <file>images/cells.gif</file>
+    <file>images/radius.gif</file>
   </qresource>
 </RCC>

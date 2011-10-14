@@ -1,40 +1,74 @@
 #include "mainwindow.h"
 
+Ui::MainWindowClass* MainWindow::uiStat;
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
+	isoReduce=false;
 	ui.setupUi(this);
-	//MainWindow::uiStat=&ui;
+	ui.ProcessProgressBar->setVisible(false);
+	ui.ProcessStatus->setVisible(false);
+	uiStat=&ui;
+	ui.graphicsView->setScene(&scene);
     QAction::connect(ui.actionRun, SIGNAL(triggered()), this, SLOT(launchApp()));
+    QAction::connect(ui.isocheckBox, SIGNAL(clicked()), this, SLOT(setIso()));
 }
 
 MainWindow::~MainWindow()
 {
 
 }
-/*void MainWindow::addLog(const std::string &txt){
+void MainWindow::setIso(){
+	isoReduce=!isoReduce;
+	if(isoReduce){
+		ui.reduceFY->setEnabled(false);
+		ui.reduceFZ->setEnabled(false);
+        QObject::connect(ui.reduceFX, SIGNAL(valueChanged(double)), ui.reduceFY, SLOT(setValue(double)));
+        QObject::connect(ui.reduceFY, SIGNAL(valueChanged(double)), ui.reduceFZ, SLOT(setValue(double)));
+	}else{
+		ui.reduceFY->setEnabled(true);
+		ui.reduceFZ->setEnabled(true);
+		QObject::disconnect(ui.reduceFX, SIGNAL(valueChanged(double)), ui.reduceFY, SLOT(setValue(double)));
+		QObject::disconnect(ui.reduceFY, SIGNAL(valueChanged(double)), ui.reduceFZ, SLOT(setValue(double)));
+	}
+}
+void MainWindow::addLog(const char txt[]){
 
-	//QString qs=uiStat->LogPanel->toPlainText().append(&txt);
-	//uiStat->LogPanel->setPlainText(qs);
-}*/
+	char s[1000];
+	uiStat->ProcessStatus->setText(txt);
+	strcat( s, txt );
+	strcat( s, "\n");
+	QString qs=uiStat->LogPanel->toPlainText().append(s);
+	uiStat->LogPanel->setPlainText(qs);
+}
+
 void MainWindow::launchApp(){
-	Box customBox(200,200,200);
-	int nbcells=40;
-	int radius=20;
-	float dt=1;
-	float maxtime=150;
+	Box customBox(ui.spinWidth->value(),ui.spinHeight->value(),ui.spinDepth->value());
+	ui.ProcessStatus->setText("Initializing");
+	ui.ProcessProgressBar->setVisible(true);
+	ui.ProcessStatus->setVisible(true);
+	ui.ProcessProgressBar->setValue(0);
+	int nbcells=ui.spinNbcells->value();
+	float radius=ui.radiusSpin->value();
+	float dt=ui.stepSpin->value();
+	float maxtime=ui.maxtimeSpin->value();
+	ui.ProcessProgressBar->setMaximum(nbcells+(maxtime/dt));
 	std::vector<Force> listForces;
-
 	CVector coord;
+
 	// instantiate new cells
+	addLog("Instantiate cells...");
 	for(int i=0;i<nbcells;i++){
-		coord.setX(rand()%200);
-		coord.setY(rand()%200);
-		coord.setZ(rand()%200);
-		Cell* aCell=new Cell();
+		coord.setX(rand()%(int)customBox.getWidth());
+		coord.setY(rand()%(int)customBox.getHeight());
+		coord.setZ(rand()%(int)customBox.getDepth());
+		Cell* aCell=new Cell(i+1);
 		aCell->setCoord(coord);
 		aCell->setRadius(radius);
 		customBox.addCell(aCell);
+		ui.ProcessProgressBar->setValue((ui.ProcessProgressBar->value())+1);
 	}
 
 	//2 tests cells
@@ -55,16 +89,24 @@ void MainWindow::launchApp(){
 	aCell2->setRadius(radius);
 	customBox.addCell(aCell2);
 	customBox.printBox();*/
+	addLog("Launching forces calculation ...");
+
 	customBox.updateForces();
 
 	for(int i=0;i<=maxtime;i+=dt){
-		customBox.reduceDepth(1.0f);
+		if(isoReduce) customBox.reduceISO(ui.reduceFX->value());
+		else customBox.reduce(ui.reduceFX->value(),ui.reduceFY->value(),ui.reduceFZ->value());
+		ui.ProcessProgressBar->setValue((ui.ProcessProgressBar->value())+1);
 	}
+	addLog("Done.");
+	customBox.updateCellTree(*ui.CellTree);
+	customBox.updateContainerTree(*ui.containerTree);
+	scene.addText("ola");
 
 	//customBox.reduceDepth(20);
-	std::cout<<"next"<<customBox.getDepth()<<std::endl;
-	customBox.printBox();
 	/*DisplayWindow window(&customBox);
 		window.displayScene();*/
 	customBox.deleteCells();
+	ui.ProcessProgressBar->setVisible(false);
+	ui.ProcessStatus->setVisible(false);
 }

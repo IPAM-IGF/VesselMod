@@ -7,19 +7,108 @@
     <x>0</x>
     <y>0</y>
     <width>1061</width>
-    <height>745</height>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SpidV</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">#centralwidget {
+/*background-color:white;
+background-image: url(:/backgroundimg/background.jpg);*/
+} 
+</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QFrame" name="frame">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="0" column="0" colspan="2">
+        <widget class="QPlainTextEdit" name="LogPanel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="plainText">
+          <string>Welcome to SpidV
+</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QProgressBar" name="ProcessProgressBar">
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="ProcessStatus">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Unknow</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
     <item row="0" column="0">
-     <widget class="QWidget" name="widget" native="true">
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QTreeWidget" name="CellTree">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="maximumSize">
           <size>
            <width>200</width>
@@ -29,21 +118,18 @@
          <property name="lineWidth">
           <number>1</number>
          </property>
-         <column>
-          <property name="text">
-           <string notr="true">1</string>
-          </property>
-         </column>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QTreeWidget" name="treeWidget">
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>16777215</height>
-          </size>
-         </property>
+         <attribute name="headerVisible">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="headerCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="headerCascadingSectionResizes">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="headerVisible">
+          <bool>true</bool>
+         </attribute>
          <column>
           <property name="text">
            <string notr="true">1</string>
@@ -59,6 +145,9 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -70,10 +159,16 @@
           <bool>true</bool>
          </property>
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+          <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -85,15 +180,15 @@
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="simopt">
           <property name="geometry">
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>254</width>
-            <height>313</height>
+            <width>260</width>
+            <height>333</height>
            </rect>
           </property>
           <attribute name="label">
@@ -107,7 +202,7 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="2" colspan="2">
+           <item row="0" column="1">
             <widget class="QSpinBox" name="spinNbcells">
              <property name="maximum">
               <number>999</number>
@@ -118,13 +213,30 @@
             </widget>
            </item>
            <item row="1" column="0">
+            <widget class="QLabel" name="Radiuslab">
+             <property name="text">
+              <string>Radius</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QDoubleSpinBox" name="radiusSpin">
+             <property name="maximum">
+              <double>300.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>20.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
             <widget class="QLabel" name="boxsizelab">
              <property name="text">
               <string>Box width</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2" colspan="2">
+           <item row="2" column="1">
             <widget class="QDoubleSpinBox" name="spinDepth">
              <property name="maximum">
               <double>9999.989999999999782</double>
@@ -134,14 +246,14 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="label_3">
              <property name="text">
               <string>Box height</string>
              </property>
             </widget>
            </item>
-           <item row="2" column="2" colspan="2">
+           <item row="3" column="1">
             <widget class="QDoubleSpinBox" name="spinWidth">
              <property name="maximum">
               <double>9999.989999999999782</double>
@@ -151,14 +263,14 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="0">
+           <item row="4" column="0">
             <widget class="QLabel" name="label_4">
              <property name="text">
               <string>Box depth</string>
              </property>
             </widget>
            </item>
-           <item row="3" column="2" colspan="2">
+           <item row="4" column="1">
             <widget class="QDoubleSpinBox" name="spinHeight">
              <property name="maximum">
               <double>9999.989999999999782</double>
@@ -168,15 +280,32 @@
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
+           <item row="5" column="0">
+            <widget class="QLabel" name="timeLab">
+             <property name="text">
+              <string>Max time</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="1">
+            <widget class="QDoubleSpinBox" name="maxtimeSpin">
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>150.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
             <widget class="QLabel" name="label">
              <property name="text">
               <string>Step</string>
              </property>
             </widget>
            </item>
-           <item row="4" column="2" colspan="2">
-            <widget class="QDoubleSpinBox" name="doubleSpinBox">
+           <item row="6" column="1">
+            <widget class="QDoubleSpinBox" name="stepSpin">
              <property name="maximum">
               <double>200.000000000000000</double>
              </property>
@@ -188,36 +317,29 @@
              </property>
             </widget>
            </item>
-           <item row="5" column="0" colspan="2">
+           <item row="7" column="0" colspan="2">
             <widget class="QLabel" name="label_2">
              <property name="text">
               <string>Reduce factor</string>
              </property>
             </widget>
            </item>
-           <item row="5" column="2">
-            <widget class="QCheckBox" name="checkBox">
-             <property name="text">
-              <string>iso</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+           <item row="8" column="0">
+            <widget class="QDoubleSpinBox" name="reduceFX">
              <property name="maximum">
               <double>300.000000000000000</double>
              </property>
             </widget>
            </item>
-           <item row="6" column="1" colspan="2">
-            <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
+           <item row="8" column="1">
+            <widget class="QDoubleSpinBox" name="reduceFY">
              <property name="maximum">
               <double>300.000000000000000</double>
              </property>
             </widget>
            </item>
-           <item row="6" column="3">
-            <widget class="QDoubleSpinBox" name="doubleSpinBox_4">
+           <item row="8" column="2">
+            <widget class="QDoubleSpinBox" name="reduceFZ">
              <property name="maximum">
               <double>300.000000000000000</double>
              </property>
@@ -226,17 +348,7 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="0">
-            <widget class="QLabel" name="label_5">
-             <property name="text">
-              <string>X</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="1" colspan="2">
+           <item row="9" column="1">
             <widget class="QLabel" name="label_6">
              <property name="text">
               <string>Y</string>
@@ -246,7 +358,7 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="3">
+           <item row="9" column="2">
             <widget class="QLabel" name="label_7">
              <property name="text">
               <string>Z</string>
@@ -256,7 +368,7 @@
              </property>
             </widget>
            </item>
-           <item row="8" column="1">
+           <item row="10" column="1">
             <spacer name="verticalSpacer">
              <property name="orientation">
               <enum>Qt::Vertical</enum>
@@ -269,6 +381,23 @@
              </property>
             </spacer>
            </item>
+           <item row="7" column="2">
+            <widget class="QCheckBox" name="isocheckBox">
+             <property name="text">
+              <string>iso</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>X</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
           </layout>
          </widget>
          <widget class="QWidget" name="othopt">
@@ -277,7 +406,7 @@
             <x>0</x>
             <y>0</y>
             <width>248</width>
-            <height>326</height>
+            <height>305</height>
            </rect>
           </property>
           <attribute name="label">
@@ -286,46 +415,25 @@
          </widget>
         </widget>
        </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QFrame" name="frame">
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>100</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_4">
-       <item row="0" column="0" colspan="2">
-        <widget class="QPlainTextEdit" name="LogPanel">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-         <property name="plainText">
-          <string>Welcome to SpidV</string>
-         </property>
-        </widget>
-       </item>
        <item row="1" column="0">
-        <widget class="QProgressBar" name="ProcessProgressBar">
-         <property name="value">
-          <number>24</number>
+        <widget class="QTreeWidget" name="containerTree">
+         <property name="minimumSize">
+          <size>
+           <width>250</width>
+           <height>0</height>
+          </size>
          </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="ProcessStatus">
-         <property name="text">
-          <string>Unknow</string>
+         <property name="maximumSize">
+          <size>
+           <width>200</width>
+           <height>16777215</height>
+          </size>
          </property>
+         <column>
+          <property name="text">
+           <string notr="true">1</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -360,7 +468,7 @@
   <action name="actionRun">
    <property name="icon">
     <iconset resource="icones.qrc">
-     <normaloff>:/icoRun/fleche verte.gif</normaloff>:/icoRun/fleche verte.gif</iconset>
+     <normaloff>:/icoRun/images/fleche verte.gif</normaloff>:/icoRun/images/fleche verte.gif</iconset>
    </property>
    <property name="text">
     <string>Run</string>

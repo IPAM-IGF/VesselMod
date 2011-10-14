@@ -1,4 +1,7 @@
 SpidV
-*.o
+debug/
 .cproject
 .project
+*.o
+
+
