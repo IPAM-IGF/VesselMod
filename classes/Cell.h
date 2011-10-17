@@ -3,10 +3,9 @@
 #include <vector>
 #include <iostream>
 #include <sstream>
-#include "protoClass.h"
+
 #include "Force.h"
-#include "Box.h"
-#include "Cell.h"
+#include "protoClass.h"
 #include "BoxForce.h"
 #include "CellForce.h"
 #include "CVector.h"

@@ -1,5 +1,6 @@
 #include "Box.h"
 #include <iostream>
+#include "mainwindow.h"
 
 using namespace std;
 Box::Box(void)
@@ -11,7 +12,7 @@ Box::Box(float width,float height, float depth):width(width),height(height), dep
 }
 
 
-Box::Box(float width,float height, float depth, std::vector<Cell*> c):width(width),height(height), depth(depth), Container(c)
+Box::Box(std::vector<Cell*> c,float width,float height, float depth): Container(c),width(width),height(height), depth(depth)
 {
 }
 
@@ -28,7 +29,7 @@ void Box::setWidth(float width){
 	this->width=width;
 }
 void Box::setHeight(float height){
-	this->height=width;
+	this->height=height;
 }
 void Box::setDepth(float depth){
 	this->depth=depth;
@@ -100,29 +101,22 @@ void Box::applyForces()
 	}
 }
 
-void Box::updateCellTree(QTreeWidget & qt){
-	qt.clear();
-	for(int i=cells.size()-1;i>=0;i--){
-		QTreeWidgetItem* item=new QTreeWidgetItem();
-		item->setIcon(0, QIcon(QString::fromUtf8(":/ico/cells.gif")));
-		item->setText(0, (std::string("Cell ")+to_string(cells[i]->getID())).c_str());
-		QTreeWidgetItem* itemX=new QTreeWidgetItem(item);
-		itemX->setText(0, (std::string("X : ")+to_string(cells[i]->getCoord().getX())).c_str());
-		itemX->setIcon(0, QIcon(QString::fromUtf8(":/ico/axis.png")));
-		QTreeWidgetItem* itemY=new QTreeWidgetItem(item);
-		itemY->setText(0, (std::string("Y : ")+to_string(cells[i]->getCoord().getY())).c_str());
-		itemY->setIcon(0, QIcon(QString::fromUtf8(":/ico/axis.png")));
-		QTreeWidgetItem* itemZ=new QTreeWidgetItem(item);
-		itemZ->setText(0, (std::string("Z : ")+to_string(cells[i]->getCoord().getZ())).c_str());
-		itemZ->setIcon(0, QIcon(QString::fromUtf8(":/ico/axis.png")));
-		QTreeWidgetItem* itemR=new QTreeWidgetItem(item);
-		itemR->setText(0, (std::string("R : ")+to_string(cells[i]->getRadius())).c_str());
-		itemR->setIcon(0, QIcon(QString::fromUtf8(":/ico/radius.gif")));
-		qt.insertTopLevelItem(0,item);
 
+void Box::generateRandomCells(int nbcells,float radius){
+	// instantiate new cells
+	CVector coord;
+	for(int i=0;i<nbcells;i++){
+		MainWindow::addLog(("Instantiate cells..."+to_string(i+1)).c_str());
+		coord.setX(rand()%(int)getWidth());
+		coord.setY(rand()%(int)getHeight());
+		coord.setZ(rand()%(int)getDepth());
+		Cell* aCell=new Cell(i+1);
+		aCell->setCoord(coord);
+		aCell->setRadius(radius);
+		addCell(aCell);
+		MainWindow::uiStat->ProcessProgressBar->setValue((MainWindow::uiStat->ProcessProgressBar->value())+1);
 	}
 }
-
 
 void Box::updateContainerTree(QTreeWidget & qt){
 	qt.clear();

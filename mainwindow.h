@@ -9,9 +9,11 @@
 #include <stdlib.h>
 #include <vector>
 #include <classes/Box.h>
+#include <classes/Sphere.h>
 #include <classes/Force.h>
 #include <classes/Cell.h>
 #include <classes/CVector.h>
+
 
 class MainWindow : public QMainWindow
 {

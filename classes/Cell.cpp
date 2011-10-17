@@ -2,7 +2,7 @@
 #include <math.h>
 #include <string>
 #include <iostream>
-
+#include "Box.h"
 
 using namespace std;
 Cell::Cell(void)

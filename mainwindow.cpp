@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-
 Ui::MainWindowClass* MainWindow::uiStat;
 
 
@@ -36,16 +35,19 @@ void MainWindow::setIso(){
 }
 void MainWindow::addLog(const char txt[]){
 
-	char s[1000];
+	//char s[1000];
 	uiStat->ProcessStatus->setText(txt);
-	strcat( s, txt );
-	strcat( s, "\n");
-	QString qs=uiStat->LogPanel->toPlainText().append(s);
+	std::string s=to_string(txt)+to_string("\n");
+	//strcat( s, txt );
+	//strcat( s, "\n");
+	QString qs=uiStat->LogPanel->toPlainText().append(s.c_str());
 	uiStat->LogPanel->setPlainText(qs);
 }
 
 void MainWindow::launchApp(){
-	Box customBox(ui.spinWidth->value(),ui.spinHeight->value(),ui.spinDepth->value());
+	CVector c;
+	Sphere customBox(c, 200);
+	srand((unsigned)time(0));
 	ui.ProcessStatus->setText("Initializing");
 	ui.ProcessProgressBar->setVisible(true);
 	ui.ProcessStatus->setVisible(true);
@@ -56,20 +58,7 @@ void MainWindow::launchApp(){
 	float maxtime=ui.maxtimeSpin->value();
 	ui.ProcessProgressBar->setMaximum(nbcells+(maxtime/dt));
 	std::vector<Force> listForces;
-	CVector coord;
-
-	// instantiate new cells
-	for(int i=0;i<nbcells;i++){
-		addLog(("Instantiate cells..."+to_string(i+1)).c_str());
-		coord.setX(rand()%(int)customBox.getWidth());
-		coord.setY(rand()%(int)customBox.getHeight());
-		coord.setZ(rand()%(int)customBox.getDepth());
-		Cell* aCell=new Cell(i+1);
-		aCell->setCoord(coord);
-		aCell->setRadius(radius);
-		customBox.addCell(aCell);
-		ui.ProcessProgressBar->setValue((ui.ProcessProgressBar->value())+1);
-	}
+	customBox.generateRandomCells(nbcells,radius);
 
 	//2 tests cells
 	/*coord.setX(100);
@@ -91,7 +80,7 @@ void MainWindow::launchApp(){
 	customBox.printBox();*/
 	addLog("Launching forces calculation ...");
 
-	customBox.updateForces();
+	/*customBox.updateForces();
 
 	for(int i=0;i<=maxtime;i+=dt){
 		if(isoReduce) customBox.reduceISO(ui.reduceFX->value());
@@ -99,12 +88,17 @@ void MainWindow::launchApp(){
 		ui.ProcessProgressBar->setValue((ui.ProcessProgressBar->value())+1);
 	}
 	addLog("Done.");
-	customBox.updateCellTree(*ui.CellTree);
+	*/customBox.updateCellTree(*ui.CellTree);
 	customBox.updateContainerTree(*ui.containerTree);
-	scene.addText("ola");
+	std::vector<Cell*> cells=customBox.getCells();
+	for(int i=cells.size()-1;i>=0;i--){
+		scene.addLine(cells[i]->getCoord().getX()-1,cells[i]->getCoord().getY(),cells[i]->getCoord().getX()+1,cells[i]->getCoord().getY(),QPen());
+	}
+
+	/*scene.addText("ola");
 
 	//customBox.reduceDepth(20);
-	/*DisplayWindow window(&customBox);
+	DisplayWindow window(&customBox);
 		window.displayScene();*/
 	customBox.deleteCells();
 	ui.ProcessProgressBar->setVisible(false);

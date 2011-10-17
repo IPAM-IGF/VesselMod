@@ -6,6 +6,7 @@
     <file>images/background.jpg</file>
   </qresource>
   <qresource prefix="/generalIco">
+    <file>images/sphere.png</file>
     <file>images/axis.png</file>
     <file>images/box.png</file>
     <file>images/cells.gif</file>
