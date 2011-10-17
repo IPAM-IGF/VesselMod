@@ -13,7 +13,6 @@ public:
 	float getWidth() const;
 	float getHeight() const;
 	float getDepth() const;
-	std::vector<Cell*> getCells() const;
 	void setWidth(float width);
 	void setHeight(float height);
 	void setDepth(float depth);

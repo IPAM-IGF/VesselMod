@@ -24,6 +24,9 @@ public:
 	void setRadius(float r);
 	CVector getCentroid() const;
 	void setCentroid(CVector cv);
+	void reduce(const float pix);
+	void updateForces();
+	void applyForces();
 private:
 	CVector centroid;
 	float radius;

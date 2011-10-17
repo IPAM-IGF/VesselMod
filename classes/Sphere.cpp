@@ -40,22 +40,11 @@ void Sphere::setCentroid(CVector cv){
 }
 void Sphere::generateRandomCells(int nbcells, float r){
 	CVector coord;
-	float locradius;
-	float locelev;
-	float locazi;
-	float cX,cY,cZ;
 	for(int i=0;i<nbcells;i++){
 		MainWindow::addLog(("Instantiate cells..."+to_string(i+1)).c_str());
-		locradius=((float)rand()/(float)RAND_MAX)*radius;
-		MainWindow::addLog(("Local radius..."+to_string(locradius)).c_str());
-		locazi=(((float)rand()/(float)RAND_MAX)*(2*M_PI));
-		locelev=((((float)rand()/(float)RAND_MAX)-0.5)*(2*M_PI));
-		cX = locradius * cos(locazi) * cos(locelev);
-		cY = locradius * cos(locazi) * sin(locelev);
-		cZ = locradius * sin(locazi);
-		coord.setX(cX);
-		coord.setY(cY);
-		coord.setZ(cZ);
+		do{
+			coord.random(radius);
+		}while(coord.distanceTo(0,0,0)>radius);
 		Cell* aCell=new Cell(i+1);
 		aCell->setCoord(coord);
 		aCell->setRadius(r);
@@ -74,4 +63,29 @@ void Sphere::updateContainerTree(QTreeWidget & qt){
 	itemWidth->setIcon(0, QIcon(QString::fromUtf8(":/ico/radius.gif")));
 	qt.insertTopLevelItem(0,item);
 }
+void Sphere::reduce(const float pix){
+	radius=radius-pix;
+	updateForces();
+}
 
+void Sphere::updateForces()
+{
+	std::cout<<"------------------"<<std::endl;
+	Sphere* tmpb=this;
+	for(unsigned int i=0;i<cells.size();i++){
+		cells[i]->checkAndSetForceWith(*tmpb);
+		for(unsigned int j=0;j<cells.size();j++){
+			if(i!=j){
+				cells[i]->checkAndSetForceWith(*cells[j]);
+			}
+		}
+	}
+	applyForces();
+}
+
+void Sphere::applyForces()
+{
+	for(unsigned int i=0;i<cells.size();i++){
+		cells[i]->applyForces();
+	}
+}

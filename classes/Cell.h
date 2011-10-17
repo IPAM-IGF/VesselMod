@@ -4,9 +4,10 @@
 #include <iostream>
 #include <sstream>
 
-#include "Force.h"
+//#include "Force.h"
 #include "protoClass.h"
 #include "BoxForce.h"
+#include "SphereForce.h"
 #include "CellForce.h"
 #include "CVector.h"
 #include "../lib/GlobalDef.h"
@@ -33,6 +34,7 @@ public:
 	void addForce(Force & f);
 	void checkAndSetForceWith(const Cell & c);
 	void checkAndSetForceWith(const Box & c);
+	void checkAndSetForceWith(const Sphere & c);
 	void applyForces();
 	void moveTo(float x,float y, float z);
     bool isDl() const;
@@ -51,10 +53,10 @@ public:
     int getID() const;
     void resetBoxCol();
 private:
-    int type;
     int ID;
-    CVector coord;
+    int type;
     float radius;
+    CVector coord;
     std::vector<Force> forces;
     bool WR;
     bool WL;

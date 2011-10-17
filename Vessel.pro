@@ -3,7 +3,8 @@ TARGET = SpidV
 QT += core \
     gui \
     opengl
-HEADERS += classes/Sphere.h \
+HEADERS += classes/SphereForce.h \
+    classes/Sphere.h \
     classes/Container.h \
     lib/GlobalDef.h \
     classes/Box.h \
@@ -15,7 +16,8 @@ HEADERS += classes/Sphere.h \
     classes/Force.h \
     classes/protoClass.h \
     mainwindow.h
-SOURCES += classes/Sphere.cpp \
+SOURCES += classes/SphereForce.cpp \
+    classes/Sphere.cpp \
     classes/Container.cpp \
     classes/Box.cpp \
     classes/BoxForce.cpp \

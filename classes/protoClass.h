@@ -11,6 +11,7 @@
 class Cell;
 class Force;
 class Box;
+class Sphere;
 
 
 

@@ -17,7 +17,6 @@
 class BoxForce: public Force {
 public:
 	BoxForce();
-    BoxForce(const Cell *c1,const Box *c2);
 	virtual ~BoxForce();
     void evalAttractiveForce(Cell &c1,const Box &b);
     void evalRepulsiveForce(Cell &c1,const Box &b);

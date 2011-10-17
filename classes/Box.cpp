@@ -24,7 +24,6 @@ Box::~Box(void)
 float Box::getWidth() const{return this->width;}
 float Box::getHeight() const{return this->height;}
 float Box::getDepth() const{return this->depth;}
-std::vector<Cell*> Box::getCells() const{return this->cells;}
 void Box::setWidth(float width){
 	this->width=width;
 }

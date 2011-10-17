@@ -46,7 +46,8 @@ void MainWindow::addLog(const char txt[]){
 
 void MainWindow::launchApp(){
 	CVector c;
-	Sphere customBox(c, 200);
+	float sphereRadius=200.0f;
+	Sphere customBox(c, sphereRadius);
 	srand((unsigned)time(0));
 	ui.ProcessStatus->setText("Initializing");
 	ui.ProcessProgressBar->setVisible(true);
@@ -79,21 +80,33 @@ void MainWindow::launchApp(){
 	customBox.addCell(aCell2);
 	customBox.printBox();*/
 	addLog("Launching forces calculation ...");
+	std::vector<Cell*> cells=customBox.getCells();
+	scene.addEllipse(-sphereRadius,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
+	for(int i=cells.size()-1;i>=0;i--){
+		scene.addEllipse(cells[i]->getCoord().getX(),cells[i]->getCoord().getY(),cells[i]->getRadius(),cells[i]->getRadius(),QPen(Qt::blue));
+	}
+	customBox.updateForces();
 
-	/*customBox.updateForces();
-
-	for(int i=0;i<=maxtime;i+=dt){
+	/*for(int i=0;i<=maxtime;i+=dt){
 		if(isoReduce) customBox.reduceISO(ui.reduceFX->value());
 		else customBox.reduce(ui.reduceFX->value(),ui.reduceFY->value(),ui.reduceFZ->value());
 		ui.ProcessProgressBar->setValue((ui.ProcessProgressBar->value())+1);
+	}*/
+
+	for(int i=0;i<=maxtime;i+=dt){
+		customBox.reduce(ui.reduceFX->value());
+		ui.ProcessProgressBar->setValue((ui.ProcessProgressBar->value())+1);
 	}
 	addLog("Done.");
-	*/customBox.updateCellTree(*ui.CellTree);
+	customBox.updateCellTree(*ui.CellTree);
 	customBox.updateContainerTree(*ui.containerTree);
-	std::vector<Cell*> cells=customBox.getCells();
+	cells=customBox.getCells();
+	scene.addEllipse(-customBox.getRadius(),-customBox.getRadius(),customBox.getRadius()*2,customBox.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
-		scene.addLine(cells[i]->getCoord().getX()-1,cells[i]->getCoord().getY(),cells[i]->getCoord().getX()+1,cells[i]->getCoord().getY(),QPen());
+		if(cells[i]->getCoord().getX()==cells[i]->getCoord().getX())
+			scene.addEllipse(cells[i]->getCoord().getX(),cells[i]->getCoord().getY(),cells[i]->getRadius(),cells[i]->getRadius(),QPen(Qt::red));
 	}
+
 
 	/*scene.addText("ola");
 
