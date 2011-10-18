@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created: Tue Oct 18 12:07:33 2011
+** Created: Tue Oct 18 17:37:55 2011
 **      by: The Qt Meta Object Compiler version 62 (Qt 4.7.4)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,7 +23,7 @@ static const uint qt_meta_data_MainWindow[] = {
        5,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -33,12 +33,19 @@ static const uint qt_meta_data_MainWindow[] = {
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x08,
       21,   11,   11,   11, 0x08,
+      33,   11,   11,   11, 0x08,
+      48,   11,   11,   11, 0x08,
+      62,   11,   11,   11, 0x08,
+      76,   11,   11,   11, 0x08,
+      95,   91,   11,   11, 0x08,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_MainWindow[] = {
     "MainWindow\0\0setIso()\0launchApp()\0"
+    "updateForces()\0deleteCells()\0clearQGview()\0"
+    "redrawQGview()\0ind\0selectContainer(int)\0"
 };
 
 const QMetaObject MainWindow::staticMetaObject = {
@@ -72,9 +79,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
         switch (_id) {
         case 0: setIso(); break;
         case 1: launchApp(); break;
+        case 2: updateForces(); break;
+        case 3: deleteCells(); break;
+        case 4: clearQGview(); break;
+        case 5: redrawQGview(); break;
+        case 6: selectContainer((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
-        _id -= 2;
+        _id -= 7;
     }
     return _id;
 }

@@ -11,6 +11,7 @@
 #include "CellForce.h"
 #include "CVector.h"
 #include "../lib/GlobalDef.h"
+#include <QGraphicsTextItem>
 
 class Cell
 {
@@ -52,7 +53,21 @@ public:
     void setWr(bool wr);
     void setID(int i);
     int getID() const;
+    void setSceneTextXY(QGraphicsTextItem*  t);
+    void setSceneEllipseXY(QGraphicsEllipseItem* s);
+    QGraphicsTextItem* getSceneTextXY() const;
+    QGraphicsEllipseItem* getSceneEllipseXY() const;
+    void setSceneTextXZ(QGraphicsTextItem*  t);
+    void setSceneEllipseXZ(QGraphicsEllipseItem* s);
+    void setSceneTextYZ(QGraphicsTextItem*  t);
+    void setSceneEllipseYZ(QGraphicsEllipseItem* s);
+    QGraphicsTextItem* getSceneTextXZ() const;
+    QGraphicsEllipseItem* getSceneEllipseXZ() const;
+    QGraphicsTextItem* getSceneTextYZ() const;
+    QGraphicsEllipseItem* getSceneEllipseYZ() const;
+    void deleteGraphicalView();
     void resetBoxCol();
+    std::vector<Cell*>* splitIn(int val) const;
 private:
     int ID;
     int type;
@@ -60,6 +75,13 @@ private:
     CVector coord;
     CVector origin;
     std::vector<Force> forces;
+    QGraphicsTextItem* sceneTextXY;
+    QGraphicsEllipseItem* sceneEllipseXY;
+    QGraphicsTextItem* sceneTextXZ;
+    QGraphicsEllipseItem* sceneEllipseXZ;
+    QGraphicsTextItem* sceneTextYZ;
+    QGraphicsEllipseItem* sceneEllipseYZ;
+
     bool WR;
     bool WL;
     bool DR;

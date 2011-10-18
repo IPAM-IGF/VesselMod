@@ -238,9 +238,59 @@ void Cell::resetBoxCol()
 	HL = false;
 }
 
+void Cell::setSceneTextXY(QGraphicsTextItem*  t){
+	sceneTextXY=t;
+}
+void Cell::setSceneEllipseXY(QGraphicsEllipseItem* s){
+	sceneEllipseXY=s;
+}
+QGraphicsTextItem* Cell::getSceneTextXY() const{
+	return sceneTextXY;
+}
+QGraphicsEllipseItem* Cell::getSceneEllipseXY() const{
+	return sceneEllipseXY;
+}
 
+void Cell::setSceneTextXZ(QGraphicsTextItem*  t){
+	sceneTextXZ=t;
+}
+void Cell::setSceneEllipseXZ(QGraphicsEllipseItem* s){
+	sceneEllipseXZ=s;
+}
+QGraphicsTextItem* Cell::getSceneTextXZ() const{
+	return sceneTextXZ;
+}
+QGraphicsEllipseItem* Cell::getSceneEllipseXZ() const{
+	return sceneEllipseXZ;
+}
+void Cell::setSceneTextYZ(QGraphicsTextItem*  t){
+	sceneTextYZ=t;
+}
+void Cell::setSceneEllipseYZ(QGraphicsEllipseItem* s){
+	sceneEllipseYZ=s;
+}
+QGraphicsTextItem* Cell::getSceneTextYZ() const{
+	return sceneTextYZ;
+}
+QGraphicsEllipseItem* Cell::getSceneEllipseYZ() const{
+	return sceneEllipseYZ;
+}
+void Cell::deleteGraphicalView(){
+	delete(sceneTextXY);
+	delete(sceneEllipseXY);
+	delete(sceneTextXZ);
+	delete(sceneEllipseXZ);
+	delete(sceneTextYZ);
+	delete(sceneEllipseYZ);
+}
 
-
+std::vector<Cell*>* Cell::splitIn(int val) const{
+	std::vector<Cell*>* daughters=new std::vector<Cell*>;
+	int v=val;
+	v=v+1;
+	//for
+	return daughters;
+}
 
 
 

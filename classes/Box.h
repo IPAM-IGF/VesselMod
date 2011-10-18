@@ -16,6 +16,12 @@ public:
 	void setWidth(float width);
 	void setHeight(float height);
 	void setDepth(float depth);
+	float getOriginWidth() const;
+	float getOriginHeight() const;
+	float getOriginDepth() const;
+	void setOriginWidth(float width);
+	void setOriginHeight(float height);
+	void setOriginDepth(float depth);
 	void printBox() const;
 	void setSize(float w,float h,float d);
 	void reduceISO(const float pas);
@@ -29,6 +35,7 @@ public:
 	void applyForces();
 private:
 	float width, height, depth;
+	float originwidth, originheight, origindepth;
 };
 
 #endif

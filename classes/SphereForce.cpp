@@ -47,7 +47,6 @@ void SphereForce::evalRepulsiveForce(Cell & c1, const Sphere & s)
 	float overlap=fmax(((c1.getCoord().distanceTo(s.getCentroid())+c1.getRadius())-s.getRadius()),0.0f);
 	CVector cv;
 	cv=(c1.getCoord()/fmax(c1.getCoord().getAbsoluteMax(),1))*overlap;
-	std::cout<<"overlap : "<<overlap<<"----"<<c1.getCoord().getAbsoluteMax()<<std::endl;
 	cv.reverseSign();
 	c1.resetBoxCol();
 	if(cv.getX()>0.0f) c1.setWl(true);

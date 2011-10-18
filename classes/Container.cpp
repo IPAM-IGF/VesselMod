@@ -7,6 +7,7 @@
 
 #include "Container.h"
 #include "Sphere.h"
+#include "../mainwindow.h"
 Container::Container() {
 	// TODO Auto-generated constructor stub
 
@@ -74,6 +75,8 @@ void Container::addCell(Cell* cell){
 }
 void Container::deleteCells(){
 	for(unsigned int i=0;i<this->cells.size();i++){
+		MainWindow::addLog(("Cell "+to_string(cells[i]->getID())+" deleted.").c_str());
+		cells[i]->deleteGraphicalView();
 		delete(this->cells[i]);
 	}
 	this->cells.clear();

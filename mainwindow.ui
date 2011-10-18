@@ -223,8 +223,8 @@ background-image: url(:/backgroundimg/background.jpg);*/
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>260</width>
-            <height>333</height>
+            <width>263</width>
+            <height>366</height>
            </rect>
           </property>
           <attribute name="label">
@@ -265,27 +265,162 @@ background-image: url(:/backgroundimg/background.jpg);*/
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item row="3" column="0">
             <widget class="QLabel" name="boxsizelab">
              <property name="text">
               <string>Box width</string>
              </property>
             </widget>
            </item>
+           <item row="4" column="0">
+            <widget class="QLabel" name="heightlab">
+             <property name="text">
+              <string>Box height</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="0">
+            <widget class="QLabel" name="depthlab">
+             <property name="text">
+              <string>Box depth</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="0">
+            <widget class="QLabel" name="timeLab">
+             <property name="text">
+              <string>Max time</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="1">
+            <widget class="QDoubleSpinBox" name="maxtimeSpin">
+             <property name="maximum">
+              <double>9999.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>150.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Step</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="1">
+            <widget class="QDoubleSpinBox" name="stepSpin">
+             <property name="maximum">
+              <double>200.000000000000000</double>
+             </property>
+             <property name="singleStep">
+              <double>0.100000000000000</double>
+             </property>
+             <property name="value">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="0" colspan="2">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Reduce factor</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="0">
+            <widget class="QDoubleSpinBox" name="reduceFX">
+             <property name="maximum">
+              <double>300.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="1">
+            <widget class="QDoubleSpinBox" name="reduceFY">
+             <property name="maximum">
+              <double>300.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="2">
+            <widget class="QDoubleSpinBox" name="reduceFZ">
+             <property name="maximum">
+              <double>300.000000000000000</double>
+             </property>
+             <property name="value">
+              <double>1.000000000000000</double>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="1">
+            <widget class="QLabel" name="label_6">
+             <property name="text">
+              <string>Y</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="2">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Z</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="1">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item row="9" column="2">
+            <widget class="QCheckBox" name="isocheckBox">
+             <property name="text">
+              <string>iso</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="text">
+              <string>X</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="containerlab">
+             <property name="text">
+              <string>Container</string>
+             </property>
+            </widget>
+           </item>
            <item row="2" column="1">
+            <widget class="QComboBox" name="containerComboBox"/>
+           </item>
+           <item row="6" column="1">
             <widget class="QDoubleSpinBox" name="spinDepth">
              <property name="maximum">
               <double>9999.989999999999782</double>
              </property>
              <property name="value">
               <double>200.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_3">
-             <property name="text">
-              <string>Box height</string>
              </property>
             </widget>
            </item>
@@ -299,13 +434,6 @@ background-image: url(:/backgroundimg/background.jpg);*/
              </property>
             </widget>
            </item>
-           <item row="4" column="0">
-            <widget class="QLabel" name="label_4">
-             <property name="text">
-              <string>Box depth</string>
-             </property>
-            </widget>
-           </item>
            <item row="4" column="1">
             <widget class="QDoubleSpinBox" name="spinHeight">
              <property name="maximum">
@@ -313,124 +441,6 @@ background-image: url(:/backgroundimg/background.jpg);*/
              </property>
              <property name="value">
               <double>200.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="0">
-            <widget class="QLabel" name="timeLab">
-             <property name="text">
-              <string>Max time</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="1">
-            <widget class="QDoubleSpinBox" name="maxtimeSpin">
-             <property name="maximum">
-              <double>9999.000000000000000</double>
-             </property>
-             <property name="value">
-              <double>150.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Step</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QDoubleSpinBox" name="stepSpin">
-             <property name="maximum">
-              <double>200.000000000000000</double>
-             </property>
-             <property name="singleStep">
-              <double>0.100000000000000</double>
-             </property>
-             <property name="value">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0" colspan="2">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Reduce factor</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="0">
-            <widget class="QDoubleSpinBox" name="reduceFX">
-             <property name="maximum">
-              <double>300.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="1">
-            <widget class="QDoubleSpinBox" name="reduceFY">
-             <property name="maximum">
-              <double>300.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="2">
-            <widget class="QDoubleSpinBox" name="reduceFZ">
-             <property name="maximum">
-              <double>300.000000000000000</double>
-             </property>
-             <property name="value">
-              <double>1.000000000000000</double>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="1">
-            <widget class="QLabel" name="label_6">
-             <property name="text">
-              <string>Y</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="2">
-            <widget class="QLabel" name="label_7">
-             <property name="text">
-              <string>Z</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="1">
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="7" column="2">
-            <widget class="QCheckBox" name="isocheckBox">
-             <property name="text">
-              <string>iso</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="0">
-            <widget class="QLabel" name="label_5">
-             <property name="text">
-              <string>X</string>
-             </property>
-             <property name="alignment">
-              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -448,6 +458,19 @@ background-image: url(:/backgroundimg/background.jpg);*/
           <attribute name="label">
            <string>Other options</string>
           </attribute>
+          <widget class="QPushButton" name="relaxButton">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>0</y>
+             <width>121</width>
+             <height>27</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Relax constrains</string>
+           </property>
+          </widget>
          </widget>
         </widget>
        </item>
@@ -518,8 +541,23 @@ background-image: url(:/backgroundimg/background.jpg);*/
     </property>
     <addaction name="actionRun"/>
    </widget>
+   <widget class="QMenu" name="menuCache">
+    <property name="title">
+     <string>Cache</string>
+    </property>
+    <addaction name="actionDelete_cells"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <addaction name="actionClear"/>
+    <addaction name="actionRedraw"/>
+   </widget>
    <addaction name="menuFile"/>
    <addaction name="menuLaunch"/>
+   <addaction name="menuCache"/>
+   <addaction name="menuView"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionRun">
@@ -532,6 +570,21 @@ background-image: url(:/backgroundimg/background.jpg);*/
    </property>
    <property name="iconVisibleInMenu">
     <bool>true</bool>
+   </property>
+  </action>
+  <action name="actionDelete_cells">
+   <property name="text">
+    <string>Delete cells</string>
+   </property>
+  </action>
+  <action name="actionClear">
+   <property name="text">
+    <string>Clear</string>
+   </property>
+  </action>
+  <action name="actionRedraw">
+   <property name="text">
+    <string>Redraw</string>
    </property>
   </action>
  </widget>

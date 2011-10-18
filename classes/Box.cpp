@@ -5,15 +5,24 @@
 using namespace std;
 Box::Box(void)
 {
+	width=-1;
+	height=-1;
+	depth=-1;
 }
 
 Box::Box(float width,float height, float depth):width(width),height(height), depth(depth)
 {
+	originwidth=width;
+	originheight=height;
+	origindepth=depth;
 }
 
 
 Box::Box(std::vector<Cell*> c,float width,float height, float depth): Container(c),width(width),height(height), depth(depth)
 {
+	originwidth=width;
+	originheight=height;
+	origindepth=depth;
 }
 
 Box::~Box(void)
@@ -34,6 +43,19 @@ void Box::setDepth(float depth){
 	this->depth=depth;
 }
 
+float Box::getOriginWidth() const{return this->originwidth;}
+float Box::getOriginHeight() const{return this->originheight;}
+float Box::getOriginDepth() const{return this->origindepth;}
+void Box::setOriginWidth(float width){
+	this->originwidth=width;
+}
+void Box::setOriginHeight(float height){
+	this->originheight=height;
+}
+void Box::setOriginDepth(float depth){
+	this->origindepth=depth;
+}
+
 void Box::printBox() const{
 	std::string s="Box : "+(int)this->width+(int)this->height+(int)this->depth;
 	std::cout << s << std::endl;
@@ -49,6 +71,11 @@ void Box::reduceISO(const float pas)
 
 void Box::setSize(float w, float h, float d)
 {
+	if(width==-1){
+		originwidth=w;
+		originheight=h;
+		origindepth=d;
+	}
 	width=w;
 	height=h;
 	depth=d;

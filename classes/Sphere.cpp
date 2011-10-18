@@ -11,15 +11,15 @@
 
 Sphere::Sphere() {
 	// TODO Auto-generated constructor stub
-
+	radius=0;
 }
 Sphere::Sphere(CVector cent,float radius):centroid(cent),radius(radius)
 {
-
+	originRadius=radius;
 }
 Sphere::Sphere(std::vector<Cell*> c,CVector cent,float radius):Container(c),centroid(cent),radius(radius)
 {
-
+	originRadius=radius;
 }
 
 
@@ -30,6 +30,7 @@ float Sphere::getRadius() const{
 	return radius;
 }
 void Sphere::setRadius(float r){
+	if(radius==0) originRadius=radius;
 	radius=r;
 }
 CVector Sphere::getCentroid() const{
@@ -37,6 +38,9 @@ CVector Sphere::getCentroid() const{
 }
 void Sphere::setCentroid(CVector cv){
 	this->centroid=cv;
+}
+float Sphere::getOriginRadius()const {
+	return originRadius;
 }
 void Sphere::generateRandomCells(int nbcells, float r){
 	CVector coord;
@@ -70,7 +74,6 @@ void Sphere::reduce(const float pix){
 
 void Sphere::updateForces()
 {
-	std::cout<<"------------------"<<std::endl;
 	Sphere* tmpb=this;
 	for(unsigned int i=0;i<cells.size();i++){
 		cells[i]->checkAndSetForceWith(*tmpb);

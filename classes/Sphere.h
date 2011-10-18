@@ -27,9 +27,11 @@ public:
 	void reduce(const float pix);
 	void updateForces();
 	void applyForces();
+	float getOriginRadius() const;
 private:
 	CVector centroid;
 	float radius;
+	float originRadius;
 };
 
 #endif /* SPHERE_H_ */

@@ -27,12 +27,25 @@ public:
 private slots:
 	void setIso();
 	void launchApp();
-
+	void updateForces();
+	void deleteCells();
+	void clearQGview();
+	void redrawQGview();
+	void selectContainer(int ind);
 private:
+	void launchSphere();
+	void launchBox();
+	void redrawQGviewForSphere();
+	void redrawQGviewForBox();
+	void updateForcesInSphere();
+	void updateForcesInBox();
     Ui::MainWindowClass ui;
     bool isoReduce;
     QGraphicsScene scene;
-
+    Box customBox;
+    Sphere customSphere;
+    bool isSphere;
+    bool isBox;
 };
 
 #endif // MAINWINDOW_H
