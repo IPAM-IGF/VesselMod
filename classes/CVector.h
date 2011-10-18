@@ -27,9 +27,10 @@ public:
 	float distanceTo(float const x1,float const y1, float const z1) const;
 	float distanceTo(CVector other) const;
 	void print() const;
+	bool isEmpty() const;
 private:
     float x,y,z;
-
+    bool empty;
 };
 
 #endif

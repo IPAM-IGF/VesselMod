@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include <QGraphicsTextItem>
 Ui::MainWindowClass* MainWindow::uiStat;
 
 
@@ -83,7 +84,9 @@ void MainWindow::launchApp(){
 	std::vector<Cell*> cells=customBox.getCells();
 	scene.addEllipse(-sphereRadius,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
-		scene.addEllipse(cells[i]->getCoord().getX(),cells[i]->getCoord().getY(),cells[i]->getRadius(),cells[i]->getRadius(),QPen(Qt::blue));
+		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius(),cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius(),cells[i]->getRadius(),QPen(Qt::blue));
+		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius(), cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
 	customBox.updateForces();
 
@@ -103,8 +106,9 @@ void MainWindow::launchApp(){
 	cells=customBox.getCells();
 	scene.addEllipse(-customBox.getRadius(),-customBox.getRadius(),customBox.getRadius()*2,customBox.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
-		if(cells[i]->getCoord().getX()==cells[i]->getCoord().getX())
-			scene.addEllipse(cells[i]->getCoord().getX(),cells[i]->getCoord().getY(),cells[i]->getRadius(),cells[i]->getRadius(),QPen(Qt::red));
+		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius(),cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius(),cells[i]->getRadius(),QPen(Qt::red));
+		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius(), cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
 
 

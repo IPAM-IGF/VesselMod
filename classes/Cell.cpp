@@ -14,7 +14,6 @@ Cell::Cell(int id):ID(id)
 {
 	resetBoxCol();
 }
-
 Cell::Cell(int id, int t, float r, CVector c):ID(id), type(t), radius(r), coord(c)
 {
 	resetBoxCol();
@@ -55,6 +54,7 @@ void Cell::setType(int type)
 
 void Cell::setCoord(CVector coord)
 {
+	if(coord.isEmpty()) origin=coord;
 	this->coord=coord;
 }
 

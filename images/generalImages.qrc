@@ -4,6 +4,9 @@
         <file>box.png</file>
         <file>cells.gif</file>
         <file>radius.gif</file>
+        <file>checkred.png</file>
+        <file>checkgreen.png</file>
+        <file>sphere.png</file>
     </qresource>
     <qresource prefix="/big">
         <file>background.jpg</file>

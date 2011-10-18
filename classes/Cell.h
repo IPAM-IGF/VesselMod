@@ -57,6 +57,7 @@ private:
     int type;
     float radius;
     CVector coord;
+    CVector origin;
     std::vector<Force> forces;
     bool WR;
     bool WL;

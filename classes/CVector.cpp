@@ -6,17 +6,19 @@
 
 CVector::CVector(void):x(0.0f),y(0.0f),z(0.0f)
 {
+	empty=false;
 }
 
 
 CVector::~CVector(void)
 {
+	empty=true;
 }
 
 
-void CVector::setX(const float val){this->x=val;}
-void CVector::setY(const float val){this->y=val;}
-void CVector::setZ(const float val){this->z=val;}
+void CVector::setX(const float val){this->x=val;empty=false;}
+void CVector::setY(const float val){this->y=val;empty=false;}
+void CVector::setZ(const float val){this->z=val;empty=false;}
 float CVector::getX() const{return this->x;}
 float CVector::getY() const{return this->y;}
 /*bool CVector::operator ==(float scalar)
@@ -119,6 +121,10 @@ float CVector::distanceTo(CVector  other) const{
 void CVector::print() const
 {
 	std::cout<<"x : "<<x<<" || y : "<<y<<" || z : "<<z<<std::endl;
+}
+
+bool CVector::isEmpty() const{
+	return empty;
 }
 
 
