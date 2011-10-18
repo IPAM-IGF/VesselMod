@@ -28,6 +28,7 @@ public:
 	float distanceTo(CVector other) const;
 	void print() const;
 	bool isEmpty() const;
+	void setEmpty(bool const b);
 private:
     float x,y,z;
     bool empty;

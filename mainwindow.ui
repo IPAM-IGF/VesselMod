@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1061</width>
-    <height>682</height>
+    <width>1023</width>
+    <height>668</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,6 +103,12 @@ background-image: url(:/backgroundimg/background.jpg);*/
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <widget class="QTreeWidget" name="CellTree">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>250</width>
@@ -196,7 +202,7 @@ background-image: url(:/backgroundimg/background.jpg);*/
          </property>
          <property name="minimumSize">
           <size>
-           <width>0</width>
+           <width>250</width>
            <height>0</height>
           </size>
          </property>
@@ -436,7 +442,7 @@ background-image: url(:/backgroundimg/background.jpg);*/
             <x>0</x>
             <y>0</y>
             <width>248</width>
-            <height>305</height>
+            <height>298</height>
            </rect>
           </property>
           <attribute name="label">
@@ -497,7 +503,7 @@ background-image: url(:/backgroundimg/background.jpg);*/
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1061</width>
+     <width>1023</width>
      <height>25</height>
     </rect>
    </property>

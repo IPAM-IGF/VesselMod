@@ -26,6 +26,7 @@ public:
 	void setCoord(CVector coord);
 	int getType() const;
 	CVector getCoord() const;
+	CVector getOrigin() const;
 	float getRadius() const;
 	std::vector<Force> getForces() const;
 	float evalDistance(const Cell &c) const;

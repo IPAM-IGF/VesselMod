@@ -93,6 +93,7 @@ void CVector::random(){
 	x=((float)rand()/(float)RAND_MAX);
 	y=((float)rand()/(float)RAND_MAX);
 	z=((float)rand()/(float)RAND_MAX);
+	empty=false;
 }
 void CVector::random(float const max){
 	float sign;
@@ -110,6 +111,7 @@ void CVector::random(float const max){
 	z=sign*((float)rand()/(float)RAND_MAX);
 	//if((rand()%2)-1==0) this->substract(1.0f);
 	this->multiply(max);
+	empty=false;
 }
 
 float CVector::distanceTo(float const x1,float const y1, float const z1) const{
@@ -125,6 +127,10 @@ void CVector::print() const
 
 bool CVector::isEmpty() const{
 	return empty;
+}
+
+void CVector::setEmpty(bool const b){
+	empty=b;
 }
 
 

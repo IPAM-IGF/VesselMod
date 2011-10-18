@@ -7,11 +7,13 @@
 using namespace std;
 Cell::Cell(void)
 {
+	coord.setEmpty(true);
 	resetBoxCol();
 }
 
 Cell::Cell(int id):ID(id)
 {
+	coord.setEmpty(true);
 	resetBoxCol();
 }
 Cell::Cell(int id, int t, float r, CVector c):ID(id), type(t), radius(r), coord(c)
@@ -36,7 +38,9 @@ CVector Cell::getCoord() const
 {
 	return this->coord;
 }
-
+CVector Cell::getOrigin() const{
+	return this->origin;
+}
 float Cell::getRadius() const
 {
 	return this->radius;
@@ -54,7 +58,7 @@ void Cell::setType(int type)
 
 void Cell::setCoord(CVector coord)
 {
-	if(coord.isEmpty()) origin=coord;
+	if(this->coord.isEmpty()) origin=coord;
 	this->coord=coord;
 }
 

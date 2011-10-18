@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created: Tue Oct 18 10:50:35 2011
+** Created: Tue Oct 18 12:07:27 2011
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -87,7 +87,7 @@ public:
     {
         if (MainWindowClass->objectName().isEmpty())
             MainWindowClass->setObjectName(QString::fromUtf8("MainWindowClass"));
-        MainWindowClass->resize(1061, 682);
+        MainWindowClass->resize(957, 668);
         MainWindowClass->setStyleSheet(QString::fromUtf8(""));
         actionRun = new QAction(MainWindowClass);
         actionRun->setObjectName(QString::fromUtf8("actionRun"));
@@ -150,6 +150,11 @@ public:
         __qtreewidgetitem->setText(0, QString::fromUtf8("1"));
         CellTree->setHeaderItem(__qtreewidgetitem);
         CellTree->setObjectName(QString::fromUtf8("CellTree"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(CellTree->sizePolicy().hasHeightForWidth());
+        CellTree->setSizePolicy(sizePolicy1);
         CellTree->setMinimumSize(QSize(250, 0));
         CellTree->setMaximumSize(QSize(200, 16777215));
         CellTree->setLineWidth(1);
@@ -166,9 +171,6 @@ public:
 
         graphicsView = new QGraphicsView(frame1);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(graphicsView->sizePolicy().hasHeightForWidth());
         graphicsView->setSizePolicy(sizePolicy1);
         graphicsView->setStyleSheet(QString::fromUtf8(""));
@@ -181,7 +183,7 @@ public:
         RightToolbox->setEnabled(true);
         sizePolicy.setHeightForWidth(RightToolbox->sizePolicy().hasHeightForWidth());
         RightToolbox->setSizePolicy(sizePolicy);
-        RightToolbox->setMinimumSize(QSize(0, 0));
+        RightToolbox->setMinimumSize(QSize(250, 0));
         RightToolbox->setMaximumSize(QSize(250, 16777215));
         RightToolbox->setFrameShape(QFrame::StyledPanel);
         simopt = new QWidget();
@@ -328,7 +330,7 @@ public:
         RightToolbox->addItem(simopt, QString::fromUtf8("Simulation options"));
         othopt = new QWidget();
         othopt->setObjectName(QString::fromUtf8("othopt"));
-        othopt->setGeometry(QRect(0, 0, 248, 305));
+        othopt->setGeometry(QRect(0, 0, 248, 298));
         RightToolbox->addItem(othopt, QString::fromUtf8("Other options"));
 
         gridLayout_3->addWidget(RightToolbox, 0, 2, 2, 1);
@@ -353,7 +355,7 @@ public:
         MainWindowClass->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindowClass);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1061, 25));
+        menubar->setGeometry(QRect(0, 0, 957, 25));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuLaunch = new QMenu(menubar);
