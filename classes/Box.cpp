@@ -136,7 +136,7 @@ void Box::generateRandomCells(int nbcells,float radius){
 		coord.setX(rand()%(int)getWidth());
 		coord.setY(rand()%(int)getHeight());
 		coord.setZ(rand()%(int)getDepth());
-		Cell* aCell=new Cell(i+1);
+		Cell* aCell=new Cell(to_string(i+1));
 		aCell->setCoord(coord);
 		aCell->setRadius(radius);
 		addCell(aCell);

@@ -40,7 +40,7 @@ void CellForce::setC2(const Cell* c2)
     this->c2 = c2;
 }
 
-void CellForce::evalForce(const Cell & c1, const Cell & c2)
+void CellForce::evalForce(Cell & c1, Cell & c2)
 {
 
 	switch (type)
@@ -59,12 +59,13 @@ void CellForce::evalForce(const Cell & c1, const Cell & c2)
 	}
 }
 
-void CellForce::evalAttractiveForce(const Cell & c1, const Cell & c2)
+void CellForce::evalAttractiveForce(Cell & c1, Cell & c2)
 {
 	float eucliDist=c1.evalDistance(c2);
 	float overlap=c1.evalOverlap(c2);
 	CVector cv;
 	if(overlap==0.0f){ this->setValueXyz(cv);return;}
+	c1.addNeighborhood(&c2);
 	cv.setX(c2.getCoord().getX()-c1.getCoord().getX());
 	cv.setY(c2.getCoord().getY()-c1.getCoord().getY());
 	cv.setZ(c2.getCoord().getZ()-c1.getCoord().getZ());
@@ -76,7 +77,7 @@ void CellForce::evalAttractiveForce(const Cell & c1, const Cell & c2)
 
 
 
-void CellForce::evalRepulsiveForce(const Cell & c1, const Cell & c2)
+void CellForce::evalRepulsiveForce(Cell & c1, Cell & c2)
 {
 	float eucliDist=c1.evalDistance(c2);
 	float overlap=c1.evalOverlap(c2);

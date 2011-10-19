@@ -49,7 +49,7 @@ void Sphere::generateRandomCells(int nbcells, float r){
 		do{
 			coord.random(radius);
 		}while(coord.distanceTo(0,0,0)>radius);
-		Cell* aCell=new Cell(i+1);
+		Cell* aCell=new Cell(to_string(i+1));
 		aCell->setCoord(coord);
 		aCell->setRadius(r);
 		addCell(aCell);

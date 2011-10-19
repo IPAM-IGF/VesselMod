@@ -75,11 +75,24 @@ void Container::addCell(Cell* cell){
 }
 void Container::deleteCells(){
 	for(unsigned int i=0;i<this->cells.size();i++){
-		MainWindow::addLog(("Cell "+to_string(cells[i]->getID())+" deleted.").c_str());
+		MainWindow::addLog(("Cell "+cells[i]->getID()+" deleted.").c_str());
 		cells[i]->deleteGraphicalView();
 		delete(this->cells[i]);
 	}
 	this->cells.clear();
+}
+
+void Container::splitCells(int val){
+	if(val==1) return;
+	std::vector<Cell*> cellstmp;
+	for(unsigned int i=0;i<this->cells.size();i++){
+		cells.erase(cells.begin()+i);
+		std::vector<Cell *>* tmp=cells[i]->splitIn(val);
+		for(unsigned int j=0;j<tmp->size();j++)
+			cellstmp.push_back(tmp->at(j));
+		delete(tmp);
+	}
+	std::copy(cellstmp.begin(), cellstmp.end(), std::back_inserter(cells));
 }
 
 

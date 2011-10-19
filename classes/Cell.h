@@ -17,9 +17,10 @@ class Cell
 {
 public:
 	Cell(void);
-	Cell(int id);
-	Cell(int id, int type, float radius, CVector coord);
-	Cell(int id, int type, float radius, CVector coord,std::vector<Force> forces);
+	Cell(std::string id);
+	Cell(std::string id, float radius, CVector coord);
+	Cell(std::string id, int type, float radius, CVector coord);
+	Cell(std::string id, int type, float radius, CVector coord,std::vector<Force> forces);
 	~Cell(void);
 	void setRadius(float radius);
 	void setType(int type);
@@ -34,11 +35,14 @@ public:
 	float evalOverlap(const Cell &c) const;
 	void printCell() const;
 	void addForce(Force & f);
-	void checkAndSetForceWith(const Cell & c);
-	void checkAndSetForceWith(const Box & c);
-	void checkAndSetForceWith(const Sphere & c);
+	void checkAndSetForceWith(Cell & c);
+	void checkAndSetForceWith(Box & c);
+	void checkAndSetForceWith(Sphere & c);
 	void applyForces();
 	void moveTo(float x,float y, float z);
+	void setNeighborhood(const std::vector<Cell*> n);
+	std::vector<Cell*> getNeighborhood() const;
+	void addNeighborhood(Cell* c);
     bool isDl() const;
     bool isDr() const;
     bool isHl() const;
@@ -51,8 +55,8 @@ public:
     void setHr(bool hr);
     void setWl(bool wl);
     void setWr(bool wr);
-    void setID(int i);
-    int getID() const;
+    void setID(std::string i);
+    std::string getID() const;
     void setSceneTextXY(QGraphicsTextItem*  t);
     void setSceneEllipseXY(QGraphicsEllipseItem* s);
     QGraphicsTextItem* getSceneTextXY() const;
@@ -69,7 +73,7 @@ public:
     void resetBoxCol();
     std::vector<Cell*>* splitIn(int val) const;
 private:
-    int ID;
+    std::string ID;
     int type;
     float radius;
     CVector coord;
@@ -81,7 +85,7 @@ private:
     QGraphicsEllipseItem* sceneEllipseXZ;
     QGraphicsTextItem* sceneTextYZ;
     QGraphicsEllipseItem* sceneEllipseYZ;
-
+    std::vector<Cell*> neighborhood;
     bool WR;
     bool WL;
     bool DR;

@@ -65,6 +65,7 @@ void MainWindow::redrawQGview(){
 	else if(isBox) redrawQGviewForBox();
 }
 void MainWindow::redrawQGviewForSphere(){
+	//customSphere.splitCells(6);
 	std::vector<Cell*> cells=customSphere.getCells();
 	float leftbox=220;
 	float sphereRadius=customSphere.getOriginRadius();
@@ -72,7 +73,7 @@ void MainWindow::redrawQGviewForSphere(){
 	scene.addEllipse(-sphereRadius+leftbox,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXZ(scene.addEllipse(cells[i]->getOrigin().getX()-cells[i]->getRadius()+leftbox,cells[i]->getOrigin().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXZ(textItem);
 		textItem->setPos(cells[i]->getOrigin().getX()-cells[i]->getRadius()+leftbox, cells[i]->getOrigin().getZ()-cells[i]->getRadius());
 	}
@@ -80,7 +81,7 @@ void MainWindow::redrawQGviewForSphere(){
 	scene.addEllipse(-sphereRadius+leftbox*3,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseYZ(scene.addEllipse(cells[i]->getOrigin().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getOrigin().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextYZ(textItem);
 		textItem->setPos(cells[i]->getOrigin().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getOrigin().getZ()-cells[i]->getRadius());
 	}
@@ -89,7 +90,7 @@ void MainWindow::redrawQGviewForSphere(){
 	scene.addEllipse(-sphereRadius-leftbox,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXY(scene.addEllipse(cells[i]->getOrigin().getX()-cells[i]->getRadius()-leftbox,cells[i]->getOrigin().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXY(textItem);
 		textItem->setPos(cells[i]->getOrigin().getX()-cells[i]->getRadius()-leftbox, cells[i]->getOrigin().getY()-cells[i]->getRadius());
 	}
@@ -98,21 +99,21 @@ void MainWindow::redrawQGviewForSphere(){
 	scene.addEllipse(-customSphere.getRadius()-leftbox,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
 	//rightbox X Z
 	scene.addEllipse(-customSphere.getRadius()+leftbox,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 	//rightbox Y Z
 	scene.addEllipse(-customSphere.getRadius()+leftbox*3,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 }
@@ -123,7 +124,7 @@ void MainWindow::redrawQGviewForBox(){
 	scene.addRect(leftbox,0,customBox.getOriginWidth(),customBox.getOriginDepth(),QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXZ(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -131,7 +132,7 @@ void MainWindow::redrawQGviewForBox(){
 	scene.addRect(leftbox*3,0,customBox.getOriginHeight(),customBox.getOriginDepth(),QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseYZ(scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextYZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -140,7 +141,7 @@ void MainWindow::redrawQGviewForBox(){
 	scene.addRect(-leftbox,0,customBox.getOriginWidth(),customBox.getOriginHeight(),QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXY(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXY(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
@@ -149,21 +150,21 @@ void MainWindow::redrawQGviewForBox(){
 	scene.addRect(0-leftbox,0,customBox.getWidth(),customBox.getHeight(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
 	//rightbox X Z
 	scene.addRect(leftbox,0,customBox.getWidth(),customBox.getDepth(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 	//rightbox Y Z
 	scene.addRect(leftbox*3,0,customBox.getHeight(),customBox.getDepth(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 }
@@ -226,7 +227,7 @@ void MainWindow::updateForcesInSphere(){
 	scene.addEllipse(-customSphere.getRadius()-leftbox,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXY(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXY(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
@@ -234,7 +235,7 @@ void MainWindow::updateForcesInSphere(){
 	scene.addEllipse(-customSphere.getRadius()+leftbox,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXZ(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -242,7 +243,7 @@ void MainWindow::updateForcesInSphere(){
 	scene.addEllipse(-customSphere.getRadius()+leftbox*3,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseYZ(scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextYZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -268,7 +269,7 @@ void MainWindow::updateForcesInBox(){
 	scene.addRect(0-leftbox,0,customBox.getWidth(),customBox.getHeight(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXY(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXY(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
@@ -276,7 +277,7 @@ void MainWindow::updateForcesInBox(){
 	scene.addRect(leftbox,0,customBox.getWidth(),customBox.getDepth(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXZ(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -284,7 +285,7 @@ void MainWindow::updateForcesInBox(){
 	scene.addRect(leftbox*3,0,customBox.getHeight(),customBox.getDepth(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseYZ(scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextYZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -337,7 +338,7 @@ void MainWindow::launchSphere(){
 	scene.addEllipse(-sphereRadius+leftbox,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXZ(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -345,7 +346,7 @@ void MainWindow::launchSphere(){
 	scene.addEllipse(-sphereRadius+leftbox*3,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseYZ(scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextYZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -354,7 +355,7 @@ void MainWindow::launchSphere(){
 	scene.addEllipse(-sphereRadius-leftbox,-sphereRadius,sphereRadius*2,sphereRadius*2,QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXY(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXY(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
@@ -378,21 +379,21 @@ void MainWindow::launchSphere(){
 	scene.addEllipse(-customSphere.getRadius()-leftbox,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
 	//rightbox X Z
 	scene.addEllipse(-customSphere.getRadius()+leftbox,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 	//rightbox Y Z
 	scene.addEllipse(-customSphere.getRadius()+leftbox*3,-customSphere.getRadius(),customSphere.getRadius()*2,customSphere.getRadius()*2,QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 
@@ -430,7 +431,7 @@ void MainWindow::launchBox(){
 	scene.addRect(leftbox,0,customBox.getWidth(),customBox.getDepth(),QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXZ(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -438,7 +439,7 @@ void MainWindow::launchBox(){
 	scene.addRect(leftbox*3,0,customBox.getHeight(),customBox.getDepth(),QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseYZ(scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextYZ(textItem);
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
@@ -447,7 +448,7 @@ void MainWindow::launchBox(){
 	scene.addRect(-leftbox,0,customBox.getWidth(),customBox.getHeight(),QPen(Qt::blue));
 	for(int i=cells.size()-1;i>=0;i--){
 		cells[i]->setSceneEllipseXY(scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::blue)));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		cells[i]->setSceneTextXY(textItem);
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
@@ -466,21 +467,21 @@ void MainWindow::launchBox(){
 	scene.addRect(0-leftbox,0,customBox.getWidth(),customBox.getHeight(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox,cells[i]->getCoord().getY()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()-leftbox, cells[i]->getCoord().getY()-cells[i]->getRadius());
 	}
 	//rightbox X Z
 	scene.addRect(leftbox,0,customBox.getWidth(),customBox.getDepth(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getX()-cells[i]->getRadius()+leftbox, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 	//rightbox Y Z
 	scene.addRect(leftbox*3,0,customBox.getHeight(),customBox.getDepth(),QPen(Qt::red));
 	for(int i=cells.size()-1;i>=0;i--){
 		scene.addEllipse(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3,cells[i]->getCoord().getZ()-cells[i]->getRadius(),cells[i]->getRadius()*2,cells[i]->getRadius()*2,QPen(Qt::red));
-		QGraphicsTextItem *textItem = scene.addText(to_string(cells[i]->getID()).c_str(), QFont());
+		QGraphicsTextItem *textItem = scene.addText(cells[i]->getID().c_str(), QFont());
 		textItem->setPos(cells[i]->getCoord().getY()-cells[i]->getRadius()+leftbox*3, cells[i]->getCoord().getZ()-cells[i]->getRadius());
 	}
 

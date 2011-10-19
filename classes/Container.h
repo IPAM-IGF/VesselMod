@@ -26,6 +26,7 @@ public:
 	void setCells(std::vector<Cell*> cells);
 	std::vector<Cell*> getCells() const;
 	void addCell(Cell* cell);
+	void splitCells(int val);
 	void deleteCells();
 protected:
 	std::vector<Cell*> cells;
