@@ -20,8 +20,8 @@ public:
 protected:
     int type; //attractive, repulsive or whatever
     CVector valueXYZ;
-    static const float ATTRACTIVE_CONST=1;
-    static const float REPULSIVE_CONST=1.5;
+    static const float ATTRACTIVE_CONST=1.5;
+    static const float REPULSIVE_CONST=1;
 };
 
 

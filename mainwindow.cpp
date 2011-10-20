@@ -65,7 +65,7 @@ void MainWindow::redrawQGview(){
 	else if(isBox) redrawQGviewForBox();
 }
 void MainWindow::redrawQGviewForSphere(){
-	//customSphere.splitCells(6);
+	customSphere.splitCells(6);
 	std::vector<Cell*> cells=customSphere.getCells();
 	float leftbox=220;
 	float sphereRadius=customSphere.getOriginRadius();

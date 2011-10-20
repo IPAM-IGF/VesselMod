@@ -62,7 +62,10 @@ void CellForce::evalForce(Cell & c1, Cell & c2)
 void CellForce::evalAttractiveForce(Cell & c1, Cell & c2)
 {
 	float eucliDist=c1.evalDistance(c2);
-	float overlap=c1.evalOverlap(c2);
+	//float overlap=c1.evalOverlap(c2);
+	float overlap=fmax((c1.getRadius()+c2.getRadius())-eucliDist,0.0f);
+	//radius of the circle made by the intersection
+	float intersectRadius=(1/(2*eucliDist))*sqrt(4*pow(eucliDist,2)*pow(c1.getRadius(),2)-pow(pow(eucliDist,2)-pow(c2.getRadius(),2)+pow(c1.getRadius(),2),2));
 	CVector cv;
 	if(overlap==0.0f){ this->setValueXyz(cv);return;}
 	c1.addNeighborhood(&c2);
@@ -70,7 +73,7 @@ void CellForce::evalAttractiveForce(Cell & c1, Cell & c2)
 	cv.setY(c2.getCoord().getY()-c1.getCoord().getY());
 	cv.setZ(c2.getCoord().getZ()-c1.getCoord().getZ());
 	//std::cout<<c1.getCoord().getX()<<"-Attract--"<<c2.getCoord().getX()<<"-over:"<<overlap<<"dist"<<eucliDist<<std::endl;
-	cv=cv*ATTRACTIVE_CONST*(overlap/eucliDist);
+	cv=cv*ATTRACTIVE_CONST*(intersectRadius/(c1.getRadius()));
 	//cv.print();
 	this->setValueXyz(cv);
 }

@@ -72,7 +72,7 @@ public:
     void deleteGraphicalView();
     void resetBoxCol();
     std::vector<Cell*>* splitIn(int val) const;
-private:
+protected:
     std::string ID;
     int type;
     float radius;

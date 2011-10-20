@@ -19,6 +19,8 @@ Cell::Cell(std::string id):ID(id)
 
 Cell::Cell(std::string id, float r, CVector c):ID(id), radius(r), coord(c)
 {
+	coord.setEmpty(true);
+	origin=coord;
 	resetBoxCol();
 }
 Cell::Cell(std::string id, int t, float r, CVector c):ID(id), type(t), radius(r), coord(c)
@@ -296,15 +298,15 @@ std::vector<Cell*>* Cell::splitIn(int val) const{
 	if(val==1){ return daughters;}
 	if(val % 2) val-=1; // on accepte pas les chiffres impair
 	CVector pt1;
-	float theta=(float)(rand()%180)-90;//elevation
+	float theta=(float)(rand()%180);//-90;//elevation
 	float phi=(float)(rand()%359);//azimuth;
 	//on place les nouvelles cellules à un rayon r/2 de la cellule mere
 	pt1.setX((radius/2)*sin(theta)*cos(phi));
 	pt1.setY((radius/2)*sin(theta)*sin(phi));
 	pt1.setZ((radius/2)*cos(theta));
-	daughters->push_back(new Cell(ID+".1",radius,pt1));
+	daughters->push_back(new Cell(ID+".1",radius,pt1+coord));
 	pt1.reverseSign();
-	daughters->push_back(new Cell(ID+".2",radius,pt1));
+	daughters->push_back(new Cell(ID+".2",radius,pt1+coord));
 	float locphi=phi+180;
 	float interval=180/fmax((val-2)/2+1,1.0f);
 	for(int i=1;i<=val-2;i+=2){
@@ -312,9 +314,9 @@ std::vector<Cell*>* Cell::splitIn(int val) const{
 		pt1.setX((radius/2)*sin(theta)*cos(locphi));
 		pt1.setY((radius/2)*sin(theta)*sin(locphi));
 		pt1.setZ((radius/2)*cos(theta));
-		daughters->push_back(new Cell(ID+"."+to_string(2+i),radius,pt1));
+		daughters->push_back(new Cell(ID+"."+to_string(2+i),radius,pt1+coord));
 		pt1.reverseSign();
-		daughters->push_back(new Cell(ID+"."+to_string(3+i),radius,pt1));
+		daughters->push_back(new Cell(ID+"."+to_string(3+i),radius,pt1+coord));
 	}
 	return daughters;
 }
